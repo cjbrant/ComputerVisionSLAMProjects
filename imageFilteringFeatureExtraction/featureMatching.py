@@ -18,6 +18,13 @@ if descriptors1 is None or descriptors2 is None:
 	print("Error: no descriptors found in one or both images")
 	exit()
 
+# check keypoints
+MIN_KEYPOINTS = 10
+if len(keypoints1) < MIN_KEYPOINTS or len(keypoints2) < MIN_KEYPOINTS:
+    print(f"Error: Not enough keypoints detected. Image1: {len(keypoints1)}, Image2: {len(keypoints2)}")
+    exit()
+
+
 # brute-force matcher
 bf = cv2.BFMatcher(cv2.NORM_L2, crossCheck=True)
 
